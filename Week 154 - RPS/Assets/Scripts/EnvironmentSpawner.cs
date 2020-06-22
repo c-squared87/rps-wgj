@@ -14,20 +14,23 @@ public class EnvironmentSpawner : MonoBehaviour
 
     void Start()
     {
-        StartSpawners();
+        StartCoroutine(SpawnRocks());
+        StartCoroutine(SpawnPlanes());
     }
 
-    // void OnEnable()
-    // {
-    //     EventsManager.ADD_OnLevelStartListener(StartSpawners);
-    //     EventsManager.ADD_GameEndListener(StopSpawners);
-    // }
+    void OnEnable()
+    {
+        EventsManager.ADD_OnLevelStartListener(StartRockSpawn);
+        EventsManager.ADD_OnScoreChangedListener(StartPlaneSpawn);
+        EventsManager.ADD_GameEndListener(StopSpawners);
+    }
 
-    // void OnDisable()
-    // {
-    //     EventsManager.REMOVE_OnLevelStartListener(StartSpawners);
-    //     EventsManager.REMOVE_GameEndListener(StopSpawners);
-    // }
+    void OnDisable()
+    {
+        EventsManager.REMOVE_OnLevelStartListener(StartRockSpawn);
+        EventsManager.REMOVE_OnScoreChangedListener(StartPlaneSpawn);
+        EventsManager.REMOVE_GameEndListener(StopSpawners);
+    }
 
     private void StopSpawners()
     {
@@ -35,7 +38,14 @@ public class EnvironmentSpawner : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void StartSpawners()
+    private void StartPlaneSpawn(int _value)
+    {
+        if (_value < 100) return;
+        StartCoroutine(SpawnPlanes());
+        EventsManager.REMOVE_OnScoreChangedListener(StartPlaneSpawn);
+    }
+
+    private void StartRockSpawn()
     {
         StartCoroutine(SpawnRocks());
     }
@@ -54,6 +64,17 @@ public class EnvironmentSpawner : MonoBehaviour
             yield return new WaitForSeconds(_rand);
 
             Instantiate(rockPrefabs[0], transform.position, Quaternion.identity);
+        }
+    }
+    IEnumerator SpawnPlanes()
+    {
+        while (true)
+        {
+            float _rand = UnityEngine.Random.Range(0.25f, 2f);
+
+            yield return new WaitForSeconds(_rand);
+
+            Instantiate(airplanePrefabs[0], transform.position + new Vector3(0, 2, 0), Quaternion.identity);
         }
     }
 
