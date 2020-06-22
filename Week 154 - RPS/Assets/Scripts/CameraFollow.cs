@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -7,8 +6,7 @@ public class CameraFollow : MonoBehaviour
     public float x_offset;
     public float y_offset;
 
-
-    void LateUpdate()
+    void Start()
     {
         Vector3 _newPos = target.position;
 
@@ -18,4 +16,5 @@ public class CameraFollow : MonoBehaviour
 
         transform.position = _newPos;
     }
+
 }

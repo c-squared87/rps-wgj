@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 7212427848445356343}
   - component: {fileID: 8076928966951226907}
   - component: {fileID: 5114327723758163406}
+  - component: {fileID: 114116127286766200}
+  - component: {fileID: 114974269190196346}
+  - component: {fileID: 114252352841180134}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -106,3 +109,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114116127286766200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068534969880343695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec540fbacc2f046769af49c327381bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x_position: -12
+--- !u!114 &114974269190196346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068534969880343695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56be2e9b0fa14c0c81ac30770a4905a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1.5
+--- !u!114 &114252352841180134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068534969880343695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7a5b8f0cda94b02aaf830c5046f2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] float jumpHeight;
-    [SerializeField] float moveSpeed;
 
     Rigidbody2D rb;
 
@@ -15,22 +11,20 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) { Jump(); }
+    }
+
     void FixedUpdate()
     {
-        transform.Translate(Vector2.right * moveSpeed * Time.fixedDeltaTime);
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
-        if (rb.velocity.y <= 0)
-        {
-            rb.gravityScale = 2;
-        }
-        else
-        {
-            rb.gravityScale = 1;
-        }
+        VelocityCheck();
+    }
+
+    private void VelocityCheck()
+    {
+        if (rb.velocity.y <= 0) { rb.gravityScale = 2; }
+        else { rb.gravityScale = 1; }
     }
 
     private void Jump()
