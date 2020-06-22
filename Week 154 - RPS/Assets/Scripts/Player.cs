@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         VelocityCheck();
+        ScoreManager.AddToScore(1);
     }
 
     private void VelocityCheck()

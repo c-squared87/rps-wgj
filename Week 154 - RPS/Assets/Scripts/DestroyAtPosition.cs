@@ -10,7 +10,7 @@ public class DestroyAtPosition : MonoBehaviour
         {
             if (gameObject.tag == "Ground")
             {
-                FindObjectOfType<EnvironmentSpawner>().SpawnGround(transform.position + new Vector3(25, 0, 0));
+                FindObjectOfType<EnvironmentSpawner>().SpawnGround(transform.position + new Vector3(18, 0, 0));
             }
             Destroy(gameObject);
         }
