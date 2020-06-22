@@ -12,10 +12,6 @@ public class EnvironmentSpawner : MonoBehaviour
     [SerializeField] GameObject[] rockPrefabs;
     [SerializeField] GameObject[] airplanePrefabs;
 
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
     void Start()
     {
         StartSpawners();
@@ -35,6 +31,7 @@ public class EnvironmentSpawner : MonoBehaviour
 
     private void StopSpawners()
     {
+        //TODO: SHOULD WE STOP ALL OR CALL THEM INDIVIDUALLY.
         StopAllCoroutines();
     }
 
