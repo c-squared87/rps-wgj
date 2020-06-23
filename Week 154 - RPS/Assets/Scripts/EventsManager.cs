@@ -29,7 +29,7 @@ public static class EventsManager
 
     public static void EndGame()
     {
-        Debug.Log("Game End Called");
+        // Debug.Log("Game End Called");
         if (onGameEnd != null)
             onGameEnd();
     }

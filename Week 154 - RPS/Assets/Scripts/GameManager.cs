@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(14);
             Time.timeScale += 0.2f;
         }
     }
