@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class EnvironmentSpawner : MonoBehaviour
@@ -21,7 +20,7 @@ public class EnvironmentSpawner : MonoBehaviour
 
     private void StartPlaneSpawn(int _value)
     {
-        if (_value <= 1000) return;
+        if (_value <= 1200) return;
         StopCoroutine("SpawnPlanes");
         StartCoroutine("SpawnPlanes");
         EventsManager.REMOVE_OnScoreChangedListener(StartPlaneSpawn);
@@ -53,13 +52,15 @@ public class EnvironmentSpawner : MonoBehaviour
     }
     IEnumerator SpawnPlanes()
     {
+        Instantiate(airplanePrefabs[0], transform.position + new Vector3(0, 2.2f, 0), Quaternion.identity);
+
         while (true)
         {
             float _rand = UnityEngine.Random.Range(4f, 7f);
 
             yield return new WaitForSeconds(_rand);
 
-            Instantiate(airplanePrefabs[0], transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+            Instantiate(airplanePrefabs[0], transform.position + new Vector3(0, 2.2f, 0), Quaternion.identity);
         }
     }
 
