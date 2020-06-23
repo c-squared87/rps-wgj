@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,20 +22,13 @@ public class GameManager : MonoBehaviour
     {
         EventsManager.REMOVE_GameEndListener(EndGame);
     }
-    
+
     void InitGame()
     {
         Time.timeScale = 1;
-
         activeOnGameOver = GameObject.FindGameObjectsWithTag("ActiveOnGameOver");
-
-        foreach (GameObject _object in activeOnGameOver)
-        {
-            _object.SetActive(false);
-        }
-
+        foreach (GameObject _object in activeOnGameOver) { _object.SetActive(false); }
         EventsManager.LevelStart();
-
         StartCoroutine("LevelUp");
     }
 
@@ -43,23 +36,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
 
+        // GameObject.Find("FinalScoreDisplay").GetComponent<Text>().text = "SCORE : " + ScoreManager.CurrentScore.ToString();
+
         var _hide = GameObject.FindGameObjectsWithTag("HideOnGameOver");
-
-        foreach (GameObject _object in _hide)
-        {
-            _object.SetActive(false);
-        }
-
-        foreach (GameObject _object in activeOnGameOver)
-        {
-            _object.SetActive(true);
-        }
-    }
-
-    // CALLED FROM ELSEWHERES.
-    public void LoadNewGame()
-    {
-        SceneManager.LoadScene("Game");
+        foreach (GameObject _object in _hide) { _object.SetActive(false); }
+        foreach (GameObject _object in activeOnGameOver) { _object.SetActive(true); }
     }
 
     IEnumerator LevelUp()

@@ -8,7 +8,7 @@ public class ScoreDisplay : MonoBehaviour
     void OnEnable()
     {
         EventsManager.ADD_OnScoreChangedListener(UpdateUI);
-        UpdateUI(0);
+        UpdateUI(ScoreManager.CurrentScore);
     }
 
     void OnDisable()

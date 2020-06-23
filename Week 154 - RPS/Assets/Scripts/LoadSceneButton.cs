@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
+using System.Collections;
 
 public class LoadSceneButton : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class LoadSceneButton : MonoBehaviour
 
     private void LoadAScene()
     {
-        // if (gameObject.name == "QuitButton") { Application.Quit; }
+        if (gameObject.name == "QuitButton") { Application.Quit(); }
         SceneManager.LoadScene(sceneToLoad);
     }
 }
