@@ -13,6 +13,16 @@ public class GameManager : MonoBehaviour
         InitGame();
     }
 
+    void OnEnable()
+    {
+        EventsManager.ADD_GameEndListener(EndGame);
+    }
+
+    void OnDisable()
+    {
+        EventsManager.REMOVE_GameEndListener(EndGame);
+    }
+    
     void InitGame()
     {
         Time.timeScale = 1;
@@ -32,6 +42,13 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         Time.timeScale = 0;
+
+        var _hide = GameObject.FindGameObjectsWithTag("HideOnGameOver");
+
+        foreach (GameObject _object in _hide)
+        {
+            _object.SetActive(false);
+        }
 
         foreach (GameObject _object in activeOnGameOver)
         {
