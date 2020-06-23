@@ -8,35 +8,20 @@ public class EnvironmentSpawner : MonoBehaviour
     [SerializeField] GameObject[] rockPrefabs;
     [SerializeField] GameObject[] airplanePrefabs;
 
-    void Start()
-    {
-        // Time.timeScale = 4;
-        // StartRockSpawn();
-        // StartPlaneSpawn(1);
-    }
-
     void OnEnable()
     {
         EventsManager.ADD_OnLevelStartListener(StartRockSpawn);
         EventsManager.ADD_OnScoreChangedListener(StartPlaneSpawn);
-        // EventsManager.ADD_GameEndListener(StopSpawners);
     }
 
     void OnDisable()
     {
         EventsManager.REMOVE_OnLevelStartListener(StartRockSpawn);
-        // EventsManager.REMOVE_GameEndListener(StopSpawners);
     }
-
-    // private void StopSpawners()
-    // {
-    //     StopCoroutine("SpawnPlanes");
-    //     StopCoroutine("SpawnRocks");
-    // }
 
     private void StartPlaneSpawn(int _value)
     {
-        if (_value <= 1500) return;
+        if (_value <= 1000) return;
         StopCoroutine("SpawnPlanes");
         StartCoroutine("SpawnPlanes");
         EventsManager.REMOVE_OnScoreChangedListener(StartPlaneSpawn);
@@ -50,25 +35,27 @@ public class EnvironmentSpawner : MonoBehaviour
 
     public void SpawnGround(Vector2 _position)
     {
-        Instantiate(groundPrefabs[0], _position, Quaternion.identity);
+        int _randObj = UnityEngine.Random.Range(0, groundPrefabs.Length);
+        Instantiate(groundPrefabs[_randObj], _position, Quaternion.identity);
     }
 
     IEnumerator SpawnRocks()
     {
         while (true)
         {
+            int _randObj = UnityEngine.Random.Range(0, rockPrefabs.Length);
             float _rand = UnityEngine.Random.Range(1f, 4f);
 
             yield return new WaitForSeconds(_rand);
 
-            Instantiate(rockPrefabs[0], transform.position, Quaternion.identity);
+            Instantiate(rockPrefabs[_randObj], transform.position, Quaternion.identity);
         }
     }
     IEnumerator SpawnPlanes()
     {
         while (true)
         {
-            float _rand = UnityEngine.Random.Range(2f, 5f);
+            float _rand = UnityEngine.Random.Range(4f, 7f);
 
             yield return new WaitForSeconds(_rand);
 

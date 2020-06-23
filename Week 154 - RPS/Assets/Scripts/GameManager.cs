@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float SpeedMultiplier = 3.5f;
+    public float SpeedMultiplier = 3.6f;
 
     GameObject[] activeOnGameOver;
 
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     void InitGame()
     {
+        ScoreManager.CurrentScore = 0;
         Time.timeScale = 1;
         activeOnGameOver = GameObject.FindGameObjectsWithTag("ActiveOnGameOver");
         foreach (GameObject _object in activeOnGameOver) { _object.SetActive(false); }
