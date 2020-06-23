@@ -10,29 +10,29 @@ public class EnvironmentSpawner : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 4;
-        StartRockSpawn();
-        StartPlaneSpawn(1);
+        // Time.timeScale = 4;
+        // StartRockSpawn();
+        // StartPlaneSpawn(1);
     }
 
     void OnEnable()
     {
         EventsManager.ADD_OnLevelStartListener(StartRockSpawn);
         EventsManager.ADD_OnScoreChangedListener(StartPlaneSpawn);
-        EventsManager.ADD_GameEndListener(StopSpawners);
+        // EventsManager.ADD_GameEndListener(StopSpawners);
     }
 
     void OnDisable()
     {
         EventsManager.REMOVE_OnLevelStartListener(StartRockSpawn);
-        EventsManager.REMOVE_GameEndListener(StopSpawners);
+        // EventsManager.REMOVE_GameEndListener(StopSpawners);
     }
 
-    private void StopSpawners()
-    {
-        // StopCoroutine("SpawnPlanes");
-        // StopCoroutine("SpawnRocks");
-    }
+    // private void StopSpawners()
+    // {
+    //     StopCoroutine("SpawnPlanes");
+    //     StopCoroutine("SpawnRocks");
+    // }
 
     private void StartPlaneSpawn(int _value)
     {

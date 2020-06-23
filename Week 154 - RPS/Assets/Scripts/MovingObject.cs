@@ -3,10 +3,13 @@
 public class MovingObject : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
+    float speedMultiplier;
 
     void FixedUpdate()
     {
-        transform.Translate(Vector2.left * moveSpeed * Time.fixedDeltaTime);
+        if (speedMultiplier == 0) speedMultiplier = FindObjectOfType<GameManager>().SpeedMultiplier;
+
+        transform.Translate(Vector2.left * moveSpeed * speedMultiplier * Time.fixedDeltaTime);
     }
 
     public void StopThisObject()
