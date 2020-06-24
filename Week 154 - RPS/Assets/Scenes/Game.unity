@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2eb29c0dc63d47a1b3dbc0cd3f0e747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 3.5
+  SpeedMultiplier: 4.2
 --- !u!4 &1209180677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 949670183275673142, guid: e385e972424c94aff94b0ffd5aff9af8,
@@ -1943,6 +1943,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2717329066806055025, guid: e5d81436eff754cbdbfbf8b1e0cc2259,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 640
+      objectReference: {fileID: 0}
     - target: {fileID: 2717329066806055026, guid: e5d81436eff754cbdbfbf8b1e0cc2259,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1997,6 +2002,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717329066806055028, guid: e5d81436eff754cbdbfbf8b1e0cc2259,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2717329066806055029, guid: e5d81436eff754cbdbfbf8b1e0cc2259,
         type: 3}

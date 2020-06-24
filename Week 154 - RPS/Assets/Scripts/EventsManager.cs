@@ -58,9 +58,9 @@ public static class EventsManager
 
     #endregion
 
-    #region BroadcastMessage
+    #region Score Changed
 
-    public delegate void OnScoreChanged(int _value);
+    public delegate void OnScoreChanged(float _value);
     static event OnScoreChanged onScoreChanged;
 
     public static void ADD_OnScoreChangedListener(EventsManager.OnScoreChanged _method)
@@ -72,7 +72,7 @@ public static class EventsManager
         onScoreChanged -= _method;
     }
 
-    public static void ScoreChanged(int _value)
+    public static void ScoreChanged(float _value)
     {
         if (onScoreChanged != null)
             onScoreChanged(_value);

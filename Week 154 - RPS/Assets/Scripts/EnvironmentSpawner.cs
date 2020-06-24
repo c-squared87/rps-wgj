@@ -18,9 +18,9 @@ public class EnvironmentSpawner : MonoBehaviour
         EventsManager.REMOVE_OnLevelStartListener(StartRockSpawn);
     }
 
-    private void StartPlaneSpawn(int _value)
+    private void StartPlaneSpawn(float _value)
     {
-        if (_value <= 1200) return;
+        if (_value <= 1000) return;
         StopCoroutine("SpawnPlanes");
         StartCoroutine("SpawnPlanes");
         EventsManager.REMOVE_OnScoreChangedListener(StartPlaneSpawn);
@@ -56,11 +56,13 @@ public class EnvironmentSpawner : MonoBehaviour
 
         while (true)
         {
+            float _randHeight =  UnityEngine.Random.Range(0.1f, 2.4f);
+            Debug.Log(_randHeight + " random height");
             float _rand = UnityEngine.Random.Range(4f, 7f);
 
             yield return new WaitForSeconds(_rand);
 
-            Instantiate(airplanePrefabs[0], transform.position + new Vector3(0, 2.2f, 0), Quaternion.identity);
+            Instantiate(airplanePrefabs[0], transform.position + new Vector3(0, _randHeight, 0), Quaternion.identity);
         }
     }
 

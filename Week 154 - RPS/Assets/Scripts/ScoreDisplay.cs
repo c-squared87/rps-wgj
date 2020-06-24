@@ -16,9 +16,9 @@ public class ScoreDisplay : MonoBehaviour
         EventsManager.REMOVE_OnScoreChangedListener(UpdateUI);
     }
 
-    private void UpdateUI(int _value)
+    private void UpdateUI(float _value)
     {
         if (text == null) text = GetComponent<Text>();
-        text.text = "score: " + _value.ToString();
+        text.text = "SCORE: " + _value.ToString();
     }
 }

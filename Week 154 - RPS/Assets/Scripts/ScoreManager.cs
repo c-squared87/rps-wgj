@@ -1,9 +1,11 @@
-﻿public static class ScoreManager
-{
-    public static int CurrentScore;
+﻿using UnityEngine;
 
-    public static void AddToScore(int _amountToAdd){
+public static class ScoreManager
+{
+    public static float CurrentScore;
+
+    public static void AddToScore(float _amountToAdd){
         CurrentScore += _amountToAdd;
-        EventsManager.ScoreChanged(CurrentScore);
+        EventsManager.ScoreChanged(Mathf.Round(CurrentScore));
     }
 }

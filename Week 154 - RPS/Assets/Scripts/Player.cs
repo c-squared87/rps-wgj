@@ -23,13 +23,13 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         VelocityCheck();
-        ScoreManager.AddToScore(1);
+        ScoreManager.AddToScore(0.25f);
     }
 
     void VelocityCheck()
     {
-        if (rb.velocity.y <= 0) { rb.gravityScale = 2; }
-        else { rb.gravityScale = 1; }
+        if (rb.velocity.y <= 0) { rb.gravityScale = 6; }
+        else { rb.gravityScale = 4; }
     }
 
     void Jump()
