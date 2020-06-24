@@ -37,9 +37,12 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
 
-        // GameObject.Find("FinalScoreDisplay").GetComponent<Text>().text = "SCORE : " + ScoreManager.CurrentScore.ToString();
-
+        var _movers = FindObjectsOfType<MovingObject>();
         var _hide = GameObject.FindGameObjectsWithTag("HideOnGameOver");
+
+        FindObjectOfType<Player>().gameObject.SetActive(false);
+
+        foreach(MovingObject _mover in _movers){_mover.StopThisObject();}
         foreach (GameObject _object in _hide) { _object.SetActive(false); }
         foreach (GameObject _object in activeOnGameOver) { _object.SetActive(true); }
     }
