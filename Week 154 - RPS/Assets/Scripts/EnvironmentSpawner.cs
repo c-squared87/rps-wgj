@@ -7,6 +7,8 @@ public class EnvironmentSpawner : MonoBehaviour
     [SerializeField] GameObject[] rockPrefabs;
     [SerializeField] GameObject[] airplanePrefabs;
 
+    bool planes = false;
+
     void OnEnable()
     {
         EventsManager.ADD_OnLevelStartListener(StartRockSpawn);
@@ -20,10 +22,11 @@ public class EnvironmentSpawner : MonoBehaviour
 
     private void StartPlaneSpawn(float _value)
     {
-        if (_value <= 400) return;
+        if (_value <= 200 || planes) return;
         // StopCoroutine("SpawnPlanes");
-        StartCoroutine("SpawnPlanes");
-        EventsManager.REMOVE_OnScoreChangedListener(StartPlaneSpawn);
+        planes = true;
+        StartCoroutine(SpawnPlanes());
+        // EventsManager.REMOVE_OnScoreChangedListener(StartPlaneSpawn);
     }
 
     private void StartRockSpawn()
@@ -58,9 +61,9 @@ public class EnvironmentSpawner : MonoBehaviour
         {
             float _randHeight =  UnityEngine.Random.Range(0.1f, 2.4f);
             Debug.Log(_randHeight + " random height");
-            float _rand = UnityEngine.Random.Range(4f, 7f);
+            float _randi = UnityEngine.Random.Range(4f, 7f);
 
-            yield return new WaitForSeconds(_rand);
+            yield return new WaitForSeconds(_randi);
 
             Instantiate(airplanePrefabs[0], transform.position + new Vector3(0, _randHeight, 0), Quaternion.identity);
         }
