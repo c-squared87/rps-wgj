@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
 
     AudioSource source;
+    Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         source = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -28,18 +30,27 @@ public class Player : MonoBehaviour
 
     void VelocityCheck()
     {
-        if (rb.velocity.y <= 0) { rb.gravityScale = 6; }
-        else { rb.gravityScale = 4; }
+        if (rb.velocity.y <= 0)
+        {
+            rb.gravityScale = 6;
+        }
+        else
+        {
+            rb.gravityScale = 4;
+            animator.enabled = true;
+        }
     }
 
     void Jump()
     {
         if (transform.position.y > 0) return;
+        animator.enabled = false;
         rb.AddForce(Vector2.up * jumpHeight * Time.fixedDeltaTime, ForceMode2D.Impulse);
         PlayJumpSound();
     }
 
-    void PlayJumpSound(){
+    void PlayJumpSound()
+    {
         source.PlayOneShot(source.clip);
     }
 }

@@ -19,6 +19,7 @@ public class ScoreDisplay : MonoBehaviour
     private void UpdateUI(float _value)
     {
         if (text == null) text = GetComponent<Text>();
+        _value = Mathf.RoundToInt(_value);
         text.text = "SCORE: " + _value.ToString();
     }
 }

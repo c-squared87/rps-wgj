@@ -20,8 +20,8 @@ public class EnvironmentSpawner : MonoBehaviour
 
     private void StartPlaneSpawn(float _value)
     {
-        if (_value <= 1000) return;
-        StopCoroutine("SpawnPlanes");
+        if (_value <= 400) return;
+        // StopCoroutine("SpawnPlanes");
         StartCoroutine("SpawnPlanes");
         EventsManager.REMOVE_OnScoreChangedListener(StartPlaneSpawn);
     }
